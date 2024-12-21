@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Мій профіль</title>
+	<link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+	<div class="profile-form">
+		<h1>Мій профіль</h1>
+		<form action="process.php" class="form-contact" method="post">
+			<div class="insert-info">
+				<div class="upload-btn left-column">
+					<img src="img/avatar_default.jpg" class="ava" alt="place for self avatar" id="avatarImage" />
+					<input type="file" id="imageUpload" accept="image/*" style="display: none" />
+					<button type="button" class="load-ava" onclick="document.getElementById('imageUpload').click();">
+						Завантажити
+					</button>
+				</div>
+
+				<div class="center-column">
+					<div class="form-section">
+						<label>Прізвище: <input type="text" name="surname" /></label>
+						<label>Ім'я: <input type="text" name="name" /></label>
+						<label>По-батькові: <input type="text" name="patronymic" /></label>
+					</div>
+
+					<div class="form-section">
+						<label>Дата народження: <input type="date" name="birthdate" /></label>
+					</div>
+
+					<div class="form-section half">
+						<label>Стать:
+							<select name="gender">
+								<option value="Чоловік">Чоловік</option>
+								<option value="Жінка">Жінка</option>
+								<option value="Невказано">Невказувати</option>
+							</select>
+						</label>
+						<label>Національність: <input type="text" name="nationality" /></label>
+					</div>
+
+					<div class="form-section">
+						<label>Коротка інформація: <textarea name="info"></textarea>
+						</label>
+					</div>
+				</div>
+
+				<div class="right-column">
+					<div class="form-section">
+						<label>Адреса: <input type="text" name="address" /></label>
+					</div>
+
+					<div class="hobbies">
+						<strong>Мої захоплення:</strong><br />
+						<input type="checkbox" name="hobbies[]" value="Захоплення 1" />
+						Захоплення 1<br />
+						<input type="checkbox" name="hobbies[]" value="Захоплення 2" />
+						Захоплення 2<br />
+						<input type="checkbox" name="hobbies[]" value="Захоплення 3" />
+						Захоплення 3<br />
+						<input type="checkbox" name="hobbies[]" value="Захоплення 4" />
+						Захоплення 4<br />
+					</div>
+
+					<div class="form-section half">
+						<label>E-mail: <input type="email" name="email" /></label>
+						<label>Skype: <input type="text" name="skype" /></label>
+					</div>
+
+					<div class="form-section">
+						<label>Телефон: <input type="tel" name="phone" /></label>
+					</div>
+
+					<div class="contact-methods">
+						<strong>Зв'язуватися зі мною по:</strong><br />
+						<input type="checkbox" name="contact_method[]" value="Телефон" />
+						Телефон<br />
+						<input type="checkbox" name="contact_method[]" value="Електронна пошта" />
+						Електронна пошта<br />
+						<input type="checkbox" name="contact_method[]" value="Skype" />
+						Skype<br />
+					</div>
+
+					<div class="subscribe">
+						<label>Отримувати розсилку:</label>
+						<label><input type="radio" name="subscribe" value="Так" /> Так</label>
+						<label><input type="radio" name="subscribe" value="Ні" /> Ні</label>
+					</div>
+				</div>
+			</div>
+			<div class="line"></div>
+			<div class="buttons">
+				<button type="submit" class="submit">Зберегти</button>
+				<button type="reset" class="reset">Скинути</button>
+			</div>
+		</form>
+	</div>
+	<script>
+		document
+			.getElementById("imageUpload")
+			.addEventListener("change", function (event) {
+				const file = event.target.files[0]
+				if (file) {
+					const reader = new FileReader()
+
+					reader.onload = function (e) {
+						document.getElementById("avatarImage").src = e.target.result
+					}
+
+					reader.readAsDataURL(file)
+				}
+			});
+	</script>
+</body>
+
+</html>
